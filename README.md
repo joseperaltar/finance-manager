@@ -1,7 +1,11 @@
 # Finance Manager
-This project was created for practice purposes. You may notice some over-engineering, which is intentional for educational reasons.
 
-## More Information
-Here you can find additional details about the project.
+This project serves as a practice exercise and may include intentional over-engineering for educational purposes.
 
-*This file is subject to change.*
+## Additional Information
+
+Find more details about the project below.
+
+- **Java version:** 21 (LTS)
+
+*Note: This file may be updated as the project evolves.*
