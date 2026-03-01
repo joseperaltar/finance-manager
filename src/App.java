@@ -22,12 +22,19 @@ public class App {
                 entries.add(entry);
                 System.out.println(entry.toString());
             } else if(userInput == 2) {
-                if(entries.isEmpty()) {
+                if(!entries.isEmpty()) {
                     System.out.println("***Lista de registros***");
                     entries.forEach(System.out::println);
                 } else {
                     System.out.println("No hay registros que mostrar.");
                 }
+            } else if(userInput == 3) { 
+                if(entries.isEmpty()) {
+                    System.out.println("No existen registros para eliminar.");
+                } else {
+                    Entry.deleteEntry(scanner, entries);
+                }
+
             }
 
         } while(userInput != 0);

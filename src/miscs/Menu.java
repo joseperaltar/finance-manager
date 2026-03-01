@@ -14,7 +14,7 @@ public class Menu {
         System.out.println("***Bienvenido***");
         System.out.println("Ingresa una opción del menú");
     }
-
+    
     public static int readChoice(Scanner scanner, MenuType menu) {
         int userInput = -1;
 
