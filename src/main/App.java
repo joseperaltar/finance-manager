@@ -1,3 +1,5 @@
+package main;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -29,12 +31,27 @@ public class App {
                     System.out.println("No hay registros que mostrar.");
                 }
             } else if(userInput == 3) { 
-                if(entries.isEmpty()) {
-                    System.out.println("No existen registros para eliminar.");
-                } else {
+                final boolean isEntriesEmpty = Entry.isEmpty(entries, "No existen registros para eliminar.");
+
+                if(!isEntriesEmpty) {
                     Entry.deleteEntry(scanner, entries);
                 }
 
+            } else if(userInput == 4) {
+                final boolean isEntriesEmpty = Entry.isEmpty(entries, "No existen registros para buscar.");
+
+                if(!isEntriesEmpty) {
+                    System.out.println("");
+                    System.out.println("Ingresa el monto referencial para buscar");
+
+                    List<Entry> filteredEntries = Entry.searchEntriesByAmount(entries, scanner);
+
+                    if(filteredEntries.isEmpty()) {
+                        System.out.println("No hay registros que cumplan con el criterio de búsqueda");
+                    } else {
+                        filteredEntries.forEach(System.out::println);
+                    }
+                }
             }
 
         } while(userInput != 0);

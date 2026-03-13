@@ -85,6 +85,47 @@ public class Entry {
         } 
     }
 
+    public static List<Entry> searchEntriesByAmount(List<Entry> entries, Scanner scanner) {
+        System.out.println("=========================");
+        System.out.println("Buscar registro por monto");
+        
+        float amount = -1;
+        while (amount == -1) {
+            System.out.println("Ingresa el monto referencial");
+            System.out.print("> ");
+            try {
+                amount = scanner.nextFloat();
+                if(amount <= 0) {
+                    amount = -1;
+                    System.out.println("ERROR: Debes ingresar un monto mayor que 0");
+                }
+            } catch(InputMismatchException e) {
+                System.out.println("ERROR: Debes ingresar un número");
+                amount = -1;
+                scanner.next();
+            }
+        }
+        
+        float referentialAmount = amount;
+        
+        int userChoice = Menu.readChoice(scanner, MenuType.SEARCH_TYPE);
+
+
+        if(userChoice == 1) {
+            return entries.stream().filter(entry -> entry.amount > referentialAmount).toList();
+        }
+
+        return entries.stream().filter(entry -> entry.amount < referentialAmount).toList();
+    }
+
+    public static boolean isEmpty(List<Entry> entries, String errorMessage) {
+        if(entries.isEmpty()) {
+            System.out.println(errorMessage);
+        }
+
+        return entries.isEmpty();
+    }
+
     public Entry(boolean type, float amount, String description) {
         this.type = type;
         this.amount = amount;
